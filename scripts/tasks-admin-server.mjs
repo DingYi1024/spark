@@ -111,7 +111,8 @@ function resolveAdminPassword() {
 
   ensureDir(path.dirname(secretPath));
   if (!fs.existsSync(secretPath)) {
-    const generated = `love-${crypto.randomBytes(12).toString('base64url')}`;
+    const initialPassword = String(process.env.TASK_ADMIN_INITIAL_PASSWORD ?? '').trim();
+    const generated = initialPassword || `love-${crypto.randomBytes(12).toString('base64url')}`;
     fs.writeFileSync(secretPath, `${generated}\n`, { encoding: 'utf8', mode: 0o600 });
   }
 

@@ -85,30 +85,33 @@ start-server.bat
 .omx/task-admin-password.txt
 ```
 
-如果部署在服务器上，建议不要使用本地生成密码，而是在启动服务前配置环境变量：
+如果部署在服务器上，并且希望以后能在后台修改密码，推荐使用一次性的初始密码环境变量：
 
 ```bash
-TASK_ADMIN_PASSWORD=你的强密码 npm run tasks:admin
+TASK_ADMIN_INITIAL_PASSWORD=你的初始密码 npm run tasks:admin
 ```
+
+第一次启动时会把初始密码写入 `.omx/task-admin-password.txt`。之后后台改密码会直接更新这个文件，常驻服务配置不用再改。
 
 后台服务默认只监听 `127.0.0.1`。发布到服务器时，如果前面没有 Nginx/Caddy 反向代理，可以改为监听公网网卡：
 
 ```bash
-TASK_ADMIN_HOST=0.0.0.0 TASK_ADMIN_PASSWORD=你的强密码 npm run tasks:admin
+TASK_ADMIN_HOST=0.0.0.0 TASK_ADMIN_INITIAL_PASSWORD=你的初始密码 npm run tasks:admin
 ```
 
 正式发布时服务会优先读取服务器平台注入的 `PORT` 环境变量，所以 Render、Railway、Fly.io、Heroku 这类随机端口平台通常不用自己写端口：
 
 ```bash
-TASK_ADMIN_PASSWORD=你的强密码 npm run start:server
+TASK_ADMIN_INITIAL_PASSWORD=你的初始密码 npm run start:server
 ```
 
 如果是自己管理的云服务器，才需要手动指定端口：
 
 ```bash
-PORT=5199 TASK_ADMIN_HOST=0.0.0.0 TASK_ADMIN_PASSWORD=你的强密码 npm run start:server
+PORT=5199 TASK_ADMIN_HOST=0.0.0.0 TASK_ADMIN_INITIAL_PASSWORD=你的初始密码 npm run start:server
 ```
 
+`TASK_ADMIN_PASSWORD` 仍然支持，但它代表“密码完全由服务器环境变量管理”。这种模式下后台不能改密码；要改只能改服务器环境变量并重启服务。
 如果只想上传新版，不要带旧版遗留文件，先生成发布目录：
 
 ```bash
@@ -124,7 +127,7 @@ release-modern/
 这个目录只包含新版前台、后台、题库源文件和运行所需 JSON，不包含旧版根目录 `index.html`、`assets/`、`static/game-manager.js`、`static/engine.js`、`static/task-timer.js` 等旧 H5 文件。服务器上上传 `release-modern/` 里的内容即可，进入该目录后启动：
 
 ```bash
-TASK_ADMIN_PASSWORD=你的强密码 npm start
+TASK_ADMIN_INITIAL_PASSWORD=你的初始密码 npm start
 ```
 
 如果使用 Nginx/Caddy，推荐让反向代理对外提供 HTTPS，再转发到本机实际监听端口。后台虽然有密码登录，但 `/admin/` 最好再加一层 IP 白名单、Basic Auth 或 VPN 访问限制。

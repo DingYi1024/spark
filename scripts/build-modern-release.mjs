@@ -109,15 +109,18 @@ writeText(
 多数服务器平台会自动注入 \`PORT\`，直接这样启动即可：
 
 \`\`\`bash
-TASK_ADMIN_PASSWORD=你的强密码 npm start
+TASK_ADMIN_INITIAL_PASSWORD=你的初始密码 npm start
 \`\`\`
+
+第一次启动时会把 \`TASK_ADMIN_INITIAL_PASSWORD\` 写入 \`.omx/task-admin-password.txt\`。之后可以在后台修改密码，不需要重配常驻服务；再次重启也会继续使用 \`.omx\` 里的新密码。
 
 如果是自己管理的云服务器，也可以手动指定端口：
 
 \`\`\`bash
-PORT=5199 TASK_ADMIN_HOST=0.0.0.0 TASK_ADMIN_PASSWORD=你的强密码 npm start
+PORT=5199 TASK_ADMIN_HOST=0.0.0.0 TASK_ADMIN_INITIAL_PASSWORD=你的初始密码 npm start
 \`\`\`
 
+不要把长期常驻服务配置成 \`TASK_ADMIN_PASSWORD\`，除非你希望密码完全由服务器环境变量控制。使用 \`TASK_ADMIN_PASSWORD\` 时，后台不能修改密码。
 ## 访问
 
 - 玩家前台：\`http://服务器域名或平台分配地址/\`
