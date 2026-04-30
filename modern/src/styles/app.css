@@ -26,7 +26,13 @@ body,
   min-height: 100%;
 }
 
+html {
+  background: #eceef2;
+}
+
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
   letter-spacing: 0;
@@ -53,6 +59,7 @@ button:focus-visible {
 
 .app-shell {
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 8px 0;
   background: #eceef2;
 }
@@ -153,6 +160,7 @@ button:focus-visible {
 }
 
 .home-nav {
+  grid-area: home-nav;
   position: relative;
   z-index: 3;
   width: 100%;
@@ -187,6 +195,7 @@ button:focus-visible {
 }
 
 .home-hero {
+  grid-area: home-hero;
   position: relative;
   z-index: 1;
   height: 188px;
@@ -272,6 +281,7 @@ button:focus-visible {
 }
 
 .mode-selection {
+  grid-area: mode-selection;
   position: relative;
   z-index: 1;
 }
@@ -320,6 +330,7 @@ button:focus-visible {
 }
 
 .home-primary {
+  grid-area: home-primary;
   position: relative;
   z-index: 1;
   min-height: 58px;
@@ -341,6 +352,7 @@ button:focus-visible {
 }
 
 .game-description {
+  grid-area: game-description;
   position: relative;
   z-index: 1;
   margin-top: auto;
@@ -371,6 +383,7 @@ button:focus-visible {
 }
 
 .game-topbar {
+  grid-area: game-topbar;
   position: relative;
   z-index: 3;
   width: 100%;
@@ -460,6 +473,7 @@ button:focus-visible {
 }
 
 .mode-selector {
+  grid-area: mode-selector;
   position: relative;
   z-index: 1;
   margin: 0 auto 7px;
@@ -503,6 +517,7 @@ button:focus-visible {
 }
 
 .board-container {
+  grid-area: board-container;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -630,7 +645,13 @@ button:focus-visible {
     drop-shadow(0 0 5px rgba(241, 213, 138, 0.16));
 }
 
+.side-panel {
+  grid-area: side-panel;
+  display: contents;
+}
+
 .dice-container {
+  grid-area: dice-container;
   position: relative;
   z-index: 1;
   margin: 12px auto 0;
@@ -886,6 +907,7 @@ button:focus-visible {
 }
 
 .control-container {
+  grid-area: control-container;
   position: relative;
   z-index: 1;
   width: min(100%, 294px);
@@ -1076,6 +1098,7 @@ button:focus-visible {
 }
 
 .task-timer {
+  grid-area: 1 / 1 / 2 / 2;
   position: fixed;
   left: 50%;
   bottom: 20px;
@@ -1144,6 +1167,7 @@ button:focus-visible {
 }
 
 .review-card-template {
+  grid-area: 1 / 1 / 2 / 2;
   position: fixed;
   left: -9999px;
   top: -9999px;
@@ -1188,6 +1212,574 @@ button:focus-visible {
   color: #e8d0a1;
   text-align: center;
   font-size: 13px;
+}
+
+@media (min-width: 700px) {
+  .app-shell {
+    padding: 24px 0;
+  }
+
+  .home-container,
+  .game-container {
+    width: min(calc(100vw - 48px), 560px);
+    min-height: calc(100vh - 48px);
+    min-height: calc(100dvh - 48px);
+    border-radius: 30px;
+  }
+
+  .home-container {
+    padding: 28px 28px 30px;
+  }
+
+  .home-container::after {
+    left: 34px;
+    right: 34px;
+    bottom: 156px;
+    height: 150px;
+  }
+
+  .home-nav {
+    min-height: 84px;
+  }
+
+  .home-title-block h1 {
+    font-size: 36px;
+  }
+
+  .home-title-block p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .home-hero {
+    height: 266px;
+    margin: 12px 0 22px;
+  }
+
+  .home-dice-mark {
+    width: 130px;
+    height: 130px;
+    border-radius: 30px;
+  }
+
+  .home-dice-mark::before,
+  .home-dice-mark::after,
+  .home-dice-mark span,
+  .home-dice-mark i,
+  .home-dice-mark b {
+    width: 17px;
+    height: 17px;
+  }
+
+  .home-dice-mark span {
+    left: 30px;
+    top: 30px;
+  }
+
+  .home-dice-mark i {
+    right: 30px;
+    top: 30px;
+  }
+
+  .home-dice-mark b {
+    left: 30px;
+    bottom: 30px;
+  }
+
+  .home-dice-mark::before {
+    right: 30px;
+    bottom: 30px;
+  }
+
+  .home-dice-mark::after {
+    left: 55px;
+    top: 55px;
+  }
+
+  .home-ring-main {
+    width: 236px;
+    height: 236px;
+  }
+
+  .home-ring-wide {
+    width: 314px;
+    height: 314px;
+  }
+
+  .mode-grid {
+    gap: 14px;
+  }
+
+  .mode-card {
+    min-height: 64px;
+    border-radius: 18px;
+  }
+
+  .mode-name {
+    font-size: 19px;
+  }
+
+  .home-primary {
+    min-height: 66px;
+    margin: 22px 0 18px;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+
+  .game-description {
+    padding: 22px 24px;
+    border-radius: 24px;
+  }
+
+  .game-description span {
+    font-size: 13px;
+  }
+
+  .game-description p {
+    font-size: 16px;
+  }
+
+  .game-container {
+    padding: 16px;
+  }
+
+  .game-container::after {
+    right: 24px;
+    bottom: 150px;
+  }
+
+  .game-topbar {
+    height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .game-topbar h1 {
+    font-size: 26px;
+  }
+
+  .back-icon {
+    left: 4px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .mode-selector {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .mode-selector button {
+    min-height: 40px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  .board-container {
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .board-container::before {
+    border-radius: 14px;
+  }
+
+  .game-board {
+    gap: 4px;
+  }
+
+  .cell {
+    border-radius: 6px;
+    font-size: 13px;
+  }
+
+  .cell-end {
+    font-size: 12px;
+  }
+
+  .dice-container {
+    margin-top: 18px;
+    gap: 9px;
+  }
+
+  .dice-container::before {
+    top: 18px;
+    width: 206px;
+    height: 120px;
+  }
+
+  .dice-wrap {
+    width: 146px;
+  }
+
+  .dice-scene {
+    width: 146px;
+    height: 126px;
+  }
+
+  .dice-face {
+    width: 96px;
+    height: 96px;
+    padding: 16px;
+    border-radius: 21px;
+  }
+
+  .pip {
+    width: 12px;
+    height: 12px;
+  }
+
+  .dice-caption {
+    font-size: 13px;
+  }
+
+  .turn-text {
+    font-size: 24px;
+  }
+
+  .control-container {
+    width: min(100%, 380px);
+    margin-top: 18px;
+    gap: 14px;
+  }
+
+  .btn,
+  .modal-btn,
+  .primary-pill {
+    min-height: 48px;
+    border-radius: 15px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  .app-shell {
+    padding: 28px 0;
+  }
+
+  .home-container,
+  .game-container {
+    min-height: calc(100vh - 56px);
+    min-height: calc(100dvh - 56px);
+    border-radius: 32px;
+  }
+
+  .home-container {
+    width: min(calc(100vw - 56px), 1040px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    grid-template-areas:
+      "home-nav home-nav"
+      "home-hero mode-selection"
+      "home-hero home-primary"
+      "game-description game-description";
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    gap: 18px 24px;
+    align-content: stretch;
+    padding: 28px 34px 32px;
+  }
+
+  .home-nav {
+    min-height: 72px;
+  }
+
+  .home-hero {
+    height: auto;
+    min-height: 322px;
+    margin: 0;
+  }
+
+  .home-dice-mark {
+    width: 148px;
+    height: 148px;
+    border-radius: 34px;
+  }
+
+  .home-dice-mark span {
+    left: 34px;
+    top: 34px;
+  }
+
+  .home-dice-mark i {
+    right: 34px;
+    top: 34px;
+  }
+
+  .home-dice-mark b {
+    left: 34px;
+    bottom: 34px;
+  }
+
+  .home-dice-mark::before {
+    right: 34px;
+    bottom: 34px;
+  }
+
+  .home-dice-mark::after {
+    left: 64px;
+    top: 64px;
+  }
+
+  .home-ring-main {
+    width: 272px;
+    height: 272px;
+  }
+
+  .home-ring-wide {
+    width: 358px;
+    height: 358px;
+  }
+
+  .mode-selection {
+    align-self: end;
+  }
+
+  .mode-grid {
+    gap: 14px;
+  }
+
+  .home-primary {
+    align-self: start;
+    margin: 0;
+  }
+
+  .game-description {
+    margin-top: 6px;
+  }
+
+  .home-container::after {
+    left: 70px;
+    right: 70px;
+    bottom: 144px;
+    height: 170px;
+  }
+
+  .game-container {
+    --game-board-size: clamp(480px, min(calc(100vw - 520px), calc(100vh - 288px)), 760px);
+    --game-side-width: clamp(260px, 24vw, 360px);
+    --game-layout-gap: clamp(18px, 2vw, 34px);
+
+    width: min(
+      calc(100vw - 56px),
+      max(900px, calc(var(--game-board-size) + var(--game-side-width) + var(--game-layout-gap) + 36px))
+    );
+    display: grid;
+    grid-template-columns: var(--game-board-size) var(--game-side-width);
+    grid-template-areas:
+      "game-topbar game-topbar"
+      "mode-selector mode-selector"
+      "board-container side-panel";
+    grid-template-rows: auto auto auto;
+    justify-content: center;
+    align-content: start;
+    gap: 12px var(--game-layout-gap);
+    padding: 18px;
+  }
+
+  .game-topbar,
+  .mode-selector,
+  .board-container,
+  .side-panel {
+    margin: 0;
+  }
+
+  .side-panel {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+    gap: 20px;
+  }
+
+  .game-topbar {
+    height: 54px;
+  }
+
+  .mode-selector {
+    max-width: none;
+  }
+
+  .board-container {
+    width: 100%;
+    align-self: start;
+  }
+
+  .dice-container {
+    min-height: auto;
+    margin: 0;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .control-container {
+    width: 100%;
+    margin: 0;
+    grid-template-columns: 1fr;
+    align-self: start;
+  }
+
+  .game-container::after {
+    right: 30px;
+    bottom: 74px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .app-shell {
+    padding: 32px 0;
+  }
+
+  .home-container {
+    width: min(calc(100vw - 72px), 1180px);
+    grid-template-columns: minmax(460px, 1fr) minmax(390px, 0.9fr);
+    gap: 22px 30px;
+    padding: 32px 42px 36px;
+  }
+
+  .home-title-block h1 {
+    font-size: 40px;
+  }
+
+  .home-hero {
+    min-height: 360px;
+  }
+
+  .home-dice-mark {
+    width: 164px;
+    height: 164px;
+    border-radius: 38px;
+  }
+
+  .home-dice-mark span {
+    left: 38px;
+    top: 38px;
+  }
+
+  .home-dice-mark i {
+    right: 38px;
+    top: 38px;
+  }
+
+  .home-dice-mark b {
+    left: 38px;
+    bottom: 38px;
+  }
+
+  .home-dice-mark::before {
+    right: 38px;
+    bottom: 38px;
+  }
+
+  .home-dice-mark::after {
+    left: 72px;
+    top: 72px;
+  }
+
+  .home-ring-main {
+    width: 310px;
+    height: 310px;
+  }
+
+  .home-ring-wide {
+    width: 404px;
+    height: 404px;
+  }
+
+  .mode-card {
+    min-height: 68px;
+  }
+
+  .game-description {
+    padding: 24px 28px;
+  }
+
+  .game-description p {
+    font-size: 17px;
+  }
+
+  .game-container {
+    width: min(
+      calc(100vw - 72px),
+      max(1040px, calc(var(--game-board-size) + var(--game-side-width) + var(--game-layout-gap) + 44px))
+    );
+    padding: 22px;
+  }
+
+  .game-topbar {
+    height: 60px;
+  }
+
+  .game-topbar h1 {
+    font-size: 28px;
+  }
+
+  .mode-selector button {
+    min-height: 44px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1800px) and (min-height: 1200px) {
+  .home-container {
+    width: min(calc(100vw - 96px), 1360px);
+    grid-template-columns: minmax(560px, 1fr) minmax(430px, 0.82fr);
+  }
+
+  .home-hero {
+    min-height: 430px;
+  }
+
+  .home-dice-mark {
+    width: 190px;
+    height: 190px;
+    border-radius: 44px;
+  }
+
+  .home-dice-mark span {
+    left: 44px;
+    top: 44px;
+  }
+
+  .home-dice-mark i {
+    right: 44px;
+    top: 44px;
+  }
+
+  .home-dice-mark b {
+    left: 44px;
+    bottom: 44px;
+  }
+
+  .home-dice-mark::before {
+    right: 44px;
+    bottom: 44px;
+  }
+
+  .home-dice-mark::after {
+    left: 84px;
+    top: 84px;
+  }
+
+  .home-ring-main {
+    width: 360px;
+    height: 360px;
+  }
+
+  .home-ring-wide {
+    width: 470px;
+    height: 470px;
+  }
+
+  .game-container {
+    --game-board-size: clamp(760px, min(calc(100vw - 780px), calc(100vh - 520px)), 920px);
+    --game-side-width: clamp(360px, 18vw, 430px);
+
+    width: min(
+      calc(100vw - 96px),
+      max(1280px, calc(var(--game-board-size) + var(--game-side-width) + var(--game-layout-gap) + 48px))
+    );
+    padding: 24px;
+  }
 }
 
 @media (max-width: 390px) {

@@ -121,6 +121,7 @@ PORT=5199 TASK_ADMIN_HOST=0.0.0.0 TASK_ADMIN_INITIAL_PASSWORD=你的初始密码
 \`\`\`
 
 不要把长期常驻服务配置成 \`TASK_ADMIN_PASSWORD\`，除非你希望密码完全由服务器环境变量控制。使用 \`TASK_ADMIN_PASSWORD\` 时，后台不能修改密码。
+
 ## 访问
 
 - 玩家前台：\`http://服务器域名或平台分配地址/\`

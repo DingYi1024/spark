@@ -270,14 +270,16 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div class="dice-container">
-        <Dice3D :caption="appCopy.diceCaption" :disabled="!gameEnabled || hasTask || Boolean(winner)" @roll-end="handleRollEnd" />
-        <p class="turn-text">{{ currentTurnLabel }}</p>
-      </div>
+      <div class="side-panel">
+        <div class="dice-container">
+          <Dice3D :caption="appCopy.diceCaption" :disabled="!gameEnabled || hasTask || Boolean(winner)" @roll-end="handleRollEnd" />
+          <p class="turn-text">{{ currentTurnLabel }}</p>
+        </div>
 
-      <div class="control-container">
-        <button class="btn" type="button" @click="restartGame">{{ appCopy.restartButton }}</button>
-        <button class="btn back" type="button" @click="goHome">{{ appCopy.homeButton }}</button>
+        <div class="control-container">
+          <button class="btn" type="button" @click="restartGame">{{ appCopy.restartButton }}</button>
+          <button class="btn back" type="button" @click="goHome">{{ appCopy.homeButton }}</button>
+        </div>
       </div>
 
       <AgeGateModal v-if="showAgeGate" :mode="activeMode" :copy="appCopy" @agree="agreeAgeGate" @rules="showRules = true" />

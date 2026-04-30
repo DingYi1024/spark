@@ -112,6 +112,7 @@ PORT=5199 TASK_ADMIN_HOST=0.0.0.0 TASK_ADMIN_INITIAL_PASSWORD=你的初始密码
 ```
 
 `TASK_ADMIN_PASSWORD` 仍然支持，但它代表“密码完全由服务器环境变量管理”。这种模式下后台不能改密码；要改只能改服务器环境变量并重启服务。
+
 如果只想上传新版，不要带旧版遗留文件，先生成发布目录：
 
 ```bash
