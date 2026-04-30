@@ -74,11 +74,12 @@ test('large tablet portrait game keeps controls below the board', async ({ page 
   const dice = await page.locator('.dice-container').boundingBox();
   const controls = await page.locator('.control-container').boundingBox();
 
-  expect(game?.width).toBeGreaterThan(720);
-  expect(game?.width).toBeLessThanOrEqual(760);
-  expect(board?.width).toBeGreaterThan(700);
+  expect(game?.width).toBeGreaterThan(820);
+  expect(game?.width).toBeLessThanOrEqual(860);
+  expect(game?.height).toBeLessThan(1320);
+  expect(board?.width).toBeGreaterThan(740);
   expect(dice?.y).toBeGreaterThan((board?.y ?? 0) + (board?.height ?? 0));
-  expect(controls?.y).toBeGreaterThan((dice?.y ?? 0) + (dice?.height ?? 0));
+  expect(controls?.x).toBeGreaterThan((dice?.x ?? 0) + (dice?.width ?? 0));
 });
 
 test('tablet landscape game uses a two-column layout', async ({ page }) => {
