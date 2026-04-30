@@ -1782,6 +1782,242 @@ button:focus-visible {
   }
 }
 
+@media (min-width: 820px) and (orientation: portrait) {
+  .app-shell {
+    padding: 32px 0;
+  }
+
+  .home-container,
+  .game-container {
+    width: min(calc(100vw - 72px), 760px);
+    min-height: auto;
+    border-radius: 30px;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 32px 32px;
+  }
+
+  .home-container::after {
+    left: 40px;
+    right: 40px;
+    bottom: 150px;
+    height: 150px;
+  }
+
+  .home-nav {
+    min-height: 78px;
+  }
+
+  .home-title-block h1 {
+    font-size: 36px;
+  }
+
+  .home-title-block p {
+    font-size: 14px;
+  }
+
+  .home-hero {
+    height: clamp(300px, 32vh, 420px);
+    min-height: 0;
+    margin: 8px 0 26px;
+  }
+
+  .home-dice-mark {
+    width: 148px;
+    height: 148px;
+    border-radius: 34px;
+  }
+
+  .home-dice-mark span {
+    left: 34px;
+    top: 34px;
+  }
+
+  .home-dice-mark i {
+    right: 34px;
+    top: 34px;
+  }
+
+  .home-dice-mark b {
+    left: 34px;
+    bottom: 34px;
+  }
+
+  .home-dice-mark::before {
+    right: 34px;
+    bottom: 34px;
+  }
+
+  .home-dice-mark::after {
+    left: 64px;
+    top: 64px;
+  }
+
+  .home-ring-main {
+    width: 272px;
+    height: 272px;
+  }
+
+  .home-ring-wide {
+    width: 358px;
+    height: 358px;
+  }
+
+  .mode-selection {
+    align-self: stretch;
+  }
+
+  .mode-grid {
+    gap: 14px;
+  }
+
+  .mode-card {
+    min-height: 64px;
+  }
+
+  .home-primary {
+    align-self: stretch;
+    min-height: 66px;
+    margin: 22px 0 20px;
+    font-size: 20px;
+  }
+
+  .game-description {
+    margin-top: 0;
+    padding: 22px 24px;
+  }
+
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .game-topbar,
+  .mode-selector,
+  .board-container,
+  .side-panel {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .game-topbar {
+    height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .game-topbar h1 {
+    font-size: 26px;
+  }
+
+  .back-icon {
+    left: 4px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .mode-selector {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .mode-selector button {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .board-container {
+    width: 100%;
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .board-container::before {
+    border-radius: 14px;
+  }
+
+  .game-board {
+    gap: 4px;
+  }
+
+  .cell {
+    border-radius: 6px;
+    font-size: 13px;
+  }
+
+  .cell-end {
+    font-size: 12px;
+  }
+
+  .side-panel {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .dice-container {
+    min-height: auto;
+    margin: 0;
+    gap: 9px;
+  }
+
+  .dice-container::before {
+    top: 18px;
+    width: 206px;
+    height: 120px;
+  }
+
+  .dice-wrap {
+    width: 146px;
+  }
+
+  .dice-scene {
+    width: 146px;
+    height: 126px;
+  }
+
+  .dice-face {
+    width: 96px;
+    height: 96px;
+    padding: 16px;
+    border-radius: 21px;
+  }
+
+  .pip {
+    width: 12px;
+    height: 12px;
+  }
+
+  .dice-caption {
+    font-size: 13px;
+  }
+
+  .turn-text {
+    font-size: 24px;
+  }
+
+  .control-container {
+    width: min(100%, 420px);
+    margin: 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .btn,
+  .modal-btn,
+  .primary-pill {
+    min-height: 48px;
+    border-radius: 15px;
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 390px) {
   .app-shell {
     padding: 6px 0;

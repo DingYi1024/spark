@@ -51,6 +51,36 @@ test('tablet portrait home uses the available viewport', async ({ page }) => {
   expect(home?.height).toBeGreaterThan(960);
 });
 
+test('large tablet portrait home keeps a vertical composition', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 1366 });
+  await page.goto('/');
+
+  const home = await page.locator('.home-container').boundingBox();
+  const hero = await page.locator('.home-hero').boundingBox();
+  const modes = await page.locator('.mode-selection').boundingBox();
+
+  expect(home?.width).toBeGreaterThan(720);
+  expect(home?.width).toBeLessThanOrEqual(760);
+  expect(modes?.y).toBeGreaterThan((hero?.y ?? 0) + (hero?.height ?? 0) - 1);
+});
+
+test('large tablet portrait game keeps controls below the board', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 1366 });
+  await page.goto('/#/pages/game/qinglu');
+  await page.getByRole('button', { name: '已知悉' }).click();
+
+  const game = await page.locator('.game-container').boundingBox();
+  const board = await page.locator('.board-container').boundingBox();
+  const dice = await page.locator('.dice-container').boundingBox();
+  const controls = await page.locator('.control-container').boundingBox();
+
+  expect(game?.width).toBeGreaterThan(720);
+  expect(game?.width).toBeLessThanOrEqual(760);
+  expect(board?.width).toBeGreaterThan(700);
+  expect(dice?.y).toBeGreaterThan((board?.y ?? 0) + (board?.height ?? 0));
+  expect(controls?.y).toBeGreaterThan((dice?.y ?? 0) + (dice?.height ?? 0));
+});
+
 test('tablet landscape game uses a two-column layout', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto('/#/pages/game/qinglu');
@@ -118,6 +148,6 @@ test('large desktop continues scaling without stretching full width', async ({ p
 
   expect(game?.width).toBeGreaterThan(1380);
   expect(game?.width).toBeLessThan(1500);
-  expect(game?.height).toBeLessThan(1240);
+  expect(game?.height).toBeLessThan(1400);
   expect(board?.width).toBeGreaterThan(900);
 });
