@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>题库管理</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section id="authScreen" class="auth-screen hidden" aria-label="后台登录">
+      <form id="loginForm" class="auth-card">
+        <span class="brand-mark">骰</span>
+        <h1>后台登录</h1>
+        <p id="authHint">请输入后台维护密码。</p>
+        <label>
+          <span>密码</span>
+          <input id="loginPassword" type="password" autocomplete="current-password" />
+        </label>
+        <button id="loginBtn" class="primary-btn" type="submit">登录</button>
+        <div id="authMessage" class="auth-message"></div>
+      </form>
+    </section>
+
+    <main id="adminShell" class="admin-shell locked">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">骰</span>
+          <div>
+            <h1>题库管理</h1>
+            <p>情侣飞行棋本地维护</p>
+          </div>
+        </div>
+
+        <div class="view-switch" role="tablist" aria-label="管理视图">
+          <button id="taskViewBtn" class="view-tab active" type="button">题库编辑</button>
+          <button id="modeViewBtn" class="view-tab" type="button">前台显示</button>
+          <button id="copyViewBtn" class="view-tab" type="button">前台文案</button>
+          <button id="securityViewBtn" class="view-tab" type="button">安全备份</button>
+        </div>
+
+        <nav id="modeTabs" class="mode-tabs" aria-label="模式"></nav>
+
+        <section class="side-panel">
+          <h2>当前模式</h2>
+          <dl id="modeStats" class="stats-list"></dl>
+        </section>
+      </aside>
+
+      <section id="taskWorkspace" class="workspace">
+        <header class="toolbar">
+          <div>
+            <p id="modeKicker" class="kicker">请选择模式</p>
+            <h2 id="modeTitle">题库</h2>
+          </div>
+          <div class="actions">
+            <button id="exportModeBtn" class="ghost-btn" type="button">导出当前</button>
+            <button id="checkBtn" class="ghost-btn" type="button">检查</button>
+            <button id="buildBtn" class="ghost-btn" type="button">生成运行题库</button>
+            <button id="saveBtn" class="secondary-btn" type="button">保存源文件</button>
+            <button id="saveBuildBtn" class="primary-btn" type="button">保存并生成</button>
+          </div>
+        </header>
+
+        <section class="filters">
+          <label class="search-box">
+            <span>搜索</span>
+            <input id="searchInput" type="search" placeholder="格子、男生任务、女生任务" />
+          </label>
+          <label class="filter-select">
+            <span>筛选</span>
+            <select id="filterSelect">
+              <option value="all">全部格子</option>
+              <option value="identical">男女相同</option>
+              <option value="different">男女不同</option>
+              <option value="empty">空内容</option>
+            </select>
+          </label>
+          <div id="dirtyState" class="dirty-state">已保存</div>
+        </section>
+
+        <section class="table-wrap">
+          <table class="task-table">
+            <thead>
+              <tr>
+                <th class="pos-col">格子</th>
+                <th>男生回合任务 m</th>
+                <th>女生回合任务 f</th>
+                <th class="action-col">动作 action</th>
+                <th class="state-col">状态</th>
+              </tr>
+            </thead>
+            <tbody id="taskRows"></tbody>
+          </table>
+        </section>
+
+        <section class="issue-panel">
+          <div class="issue-header">
+            <h2>检查结果</h2>
+            <button id="clearIssuesBtn" class="icon-btn" type="button" aria-label="清空检查结果">×</button>
+          </div>
+          <div id="issueList" class="issue-list">暂无检查结果</div>
+        </section>
+      </section>
+
+      <section id="modeWorkspace" class="workspace mode-workspace hidden">
+        <header class="toolbar">
+          <div>
+            <p class="kicker">front page</p>
+            <h2>前台显示管理</h2>
+          </div>
+          <div class="actions">
+            <button id="exportAllBtn" class="ghost-btn" type="button">导出全部</button>
+            <button id="importPackageBtn" class="ghost-btn" type="button">导入包</button>
+            <button id="addModeBtn" class="ghost-btn" type="button">新增项目</button>
+            <button id="saveModesBtn" class="primary-btn" type="button">保存并生成</button>
+            <input id="importFileInput" type="file" accept="application/json,.json" hidden />
+          </div>
+        </header>
+
+        <section class="mode-help">
+          后台可以保留多个题库项目。只有打开“前台展示”的项目会出现在玩家首页，排序数字越小越靠前；JSON 题库包可用于备份、迁移和后续开发联调。
+        </section>
+
+        <section class="table-wrap">
+          <table class="mode-config-table">
+            <thead>
+              <tr>
+                <th class="visible-col">展示</th>
+                <th class="order-col">排序</th>
+                <th>模式 ID</th>
+                <th>首页名称</th>
+                <th>页面标题</th>
+                <th>绑定题库</th>
+                <th class="state-col">状态</th>
+              </tr>
+            </thead>
+            <tbody id="modeConfigRows"></tbody>
+          </table>
+        </section>
+      </section>
+
+      <section id="copyWorkspace" class="workspace copy-workspace hidden">
+        <header class="toolbar">
+          <div>
+            <p class="kicker">copywriting</p>
+            <h2>前台文案管理</h2>
+          </div>
+          <div class="actions">
+            <button id="saveCopyBtn" class="primary-btn" type="button">保存并生成</button>
+          </div>
+        </header>
+
+        <section class="mode-help">
+          这里维护玩家端可见的标题、提示语、按钮和弹窗文字。保存后会写入内容源文件，并生成前端运行配置。
+        </section>
+
+        <section id="copyFields" class="copy-grid" aria-label="前台文案字段"></section>
+      </section>
+
+      <section id="securityWorkspace" class="workspace security-workspace hidden">
+        <header class="toolbar">
+          <div>
+            <p class="kicker">security</p>
+            <h2>安全与备份</h2>
+          </div>
+          <div class="actions">
+            <button id="refreshSecurityBtn" class="ghost-btn" type="button">刷新</button>
+            <button id="logoutBtn" class="secondary-btn" type="button">退出登录</button>
+          </div>
+        </header>
+
+        <section class="security-summary">
+          <dl id="securityStats" class="security-stats"></dl>
+        </section>
+
+        <section class="password-panel">
+          <div>
+            <p class="kicker">password</p>
+            <h3>修改后台密码</h3>
+            <p id="passwordHelp">适合设置临时维护密码。修改后其它已登录会话会失效。</p>
+          </div>
+          <form id="passwordForm" class="password-form">
+            <label>
+              <span>当前密码</span>
+              <input id="currentPassword" type="password" autocomplete="current-password" />
+            </label>
+            <label>
+              <span>新密码</span>
+              <input id="newPassword" type="password" autocomplete="new-password" />
+            </label>
+            <label>
+              <span>确认新密码</span>
+              <input id="confirmPassword" type="password" autocomplete="new-password" />
+            </label>
+            <button id="changePasswordBtn" class="primary-btn" type="submit">修改密码</button>
+          </form>
+        </section>
+
+        <section class="table-wrap security-table-wrap">
+          <table class="backup-table">
+            <thead>
+              <tr>
+                <th>备份文件</th>
+                <th>更新时间</th>
+                <th>大小</th>
+                <th class="backup-action-col">操作</th>
+              </tr>
+            </thead>
+            <tbody id="backupRows"></tbody>
+          </table>
+        </section>
+
+        <section class="issue-panel audit-panel">
+          <div class="issue-header">
+            <h2>操作日志</h2>
+          </div>
+          <div id="auditRows" class="audit-list">暂无操作记录</div>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

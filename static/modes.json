@@ -1,0 +1,74 @@
+[
+  {
+    "id": "qinglu",
+    "name": "情侣版",
+    "title": "情侣版飞行棋",
+    "visible": true,
+    "order": 1,
+    "taskBank": "qinglu",
+    "icon": "qinglu",
+    "accent": "#c83a2d",
+    "soft": "#2b1715",
+    "boardBg": "radial-gradient(circle at 50% 0%, #6e1f1c 0%, #241111 42%, #080706 100%)"
+  },
+  {
+    "id": "gaoji",
+    "name": "高级版",
+    "title": "高级版飞行棋",
+    "visible": true,
+    "order": 2,
+    "taskBank": "gaoji",
+    "icon": "gaoji",
+    "accent": "#c9973d",
+    "soft": "#172821",
+    "boardBg": "radial-gradient(circle at 50% 0%, #263d31 0%, #161b18 42%, #070806 100%)"
+  },
+  {
+    "id": "simi",
+    "name": "私密版",
+    "title": "私密版飞行棋",
+    "visible": true,
+    "order": 3,
+    "taskBank": "simi",
+    "icon": "simi",
+    "accent": "#8e2435",
+    "soft": "#20111a",
+    "boardBg": "radial-gradient(circle at 50% 0%, #5f1e31 0%, #1c1118 48%, #070607 100%)"
+  },
+  {
+    "id": "sm",
+    "name": "SM版",
+    "title": "SM版飞行棋",
+    "visible": true,
+    "order": 4,
+    "taskBank": "sm",
+    "icon": "sm",
+    "accent": "#b21f2d",
+    "soft": "#171012",
+    "boardBg": "radial-gradient(circle at 50% 0%, #401317 0%, #151010 46%, #050505 100%)"
+  },
+  {
+    "id": "nvpu",
+    "name": "女仆版",
+    "title": "女仆版飞行棋",
+    "visible": true,
+    "order": 5,
+    "taskBank": "nvpu",
+    "icon": "nvpu",
+    "accent": "#b88442",
+    "soft": "#251812",
+    "boardBg": "radial-gradient(circle at 50% 0%, #522417 0%, #211410 44%, #070605 100%)"
+  },
+  {
+    "id": "sizu",
+    "name": "丝足版",
+    "title": "丝足版飞行棋",
+    "visible": true,
+    "order": 6,
+    "taskBank": "sizu",
+    "icon": "sizu",
+    "accent": "#4f9b7c",
+    "soft": "#13251f",
+    "boardBg": "radial-gradient(circle at 50% 0%, #244f3f 0%, #121d19 46%, #050706 100%)"
+  }
+]

@@ -1,0 +1,24 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+    <linearGradient id="innerGlowBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  
+  <circle cx="60" cy="60" r="48" fill="url(#gradBlue)" />
+  <circle cx="60" cy="62" r="48" fill="none" stroke="#1d4ed8" stroke-width="4" stroke-opacity="0.7"/>
+  <ellipse cx="60" cy="28" rx="28" ry="10" fill="url(#innerGlowBlue)"/>
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.5"/>
+  
+  <g stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="52" cy="68" r="14"/>
+    <line x1="62" y1="58" x2="76" y2="44"/>
+    <polyline points="64,44 76,44 76,56"/>
+  </g>
+</svg>

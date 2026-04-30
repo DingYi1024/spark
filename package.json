@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "tasks:check": "node scripts/check-tasks.mjs",
+    "tasks:build": "node scripts/build-tasks.mjs",
+    "tasks:import-edit": "node scripts/import-task-edit.mjs",
+    "tasks:admin": "node scripts/tasks-admin-server.mjs",
+    "serve": "node scripts/tasks-admin-server.mjs",
+    "start:server": "npm run build:modern && node scripts/tasks-admin-server.mjs",
+    "release:modern": "npm run build:modern && node scripts/build-modern-release.mjs",
+    "dev:modern": "npm run tasks:build && vite --config vite.config.ts --host 127.0.0.1",
+    "build:modern": "npm run tasks:build && vite build --config vite.config.ts",
+    "preview:modern": "vite preview --config vite.config.ts --host 127.0.0.1",
+    "test:unit": "vitest run --config vite.config.ts",
+    "test:e2e": "playwright test --config playwright.config.ts"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.10",
+    "vitest": "^4.1.5",
+    "vue": "^3.5.33"
+  }
+}

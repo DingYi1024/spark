@@ -1,0 +1,24 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6" />
+      <stop offset="50%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#881337" />
+    </linearGradient>
+    <linearGradient id="innerGlowPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  
+  <circle cx="60" cy="60" r="48" fill="url(#gradPink)" />
+  <circle cx="60" cy="62" r="48" fill="none" stroke="#be185d" stroke-width="4" stroke-opacity="0.7"/>
+  <ellipse cx="60" cy="28" rx="28" ry="10" fill="url(#innerGlowPink)"/>
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.5"/>
+  
+  <g stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="60" cy="52" r="14"/>
+    <line x1="60" y1="66" x2="60" y2="84"/>
+    <line x1="50" y1="76" x2="70" y2="76"/>
+  </g>
+</svg>

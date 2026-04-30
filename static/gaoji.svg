@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- 背景 -->
+  <rect x="5" y="5" width="90" height="90" rx="10" fill="#add8e6"/>
+  
+  <!-- 钻石形状 -->
+  <path d="M50,15 L70,45 L50,75 L30,45 Z" fill="#4169e1"/>
+  <path d="M50,20 L65,45 L50,70 L35,45 Z" fill="#87cefa"/>
+  
+  <!-- 星星装饰 -->
+  <path d="M50,5 L55,25 L75,30 L60,45 L65,65 L50,55 L35,65 L40,45 L25,30 L45,25 Z" fill="#ffd700"/>
+</svg>
