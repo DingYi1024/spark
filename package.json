@@ -2,7 +2,6 @@
   "scripts": {
     "tasks:check": "node scripts/check-tasks.mjs",
     "tasks:build": "node scripts/build-tasks.mjs",
-    "tasks:import-edit": "node scripts/import-task-edit.mjs",
     "tasks:admin": "node scripts/tasks-admin-server.mjs",
     "serve": "node scripts/tasks-admin-server.mjs",
     "start:server": "npm run build:modern && node scripts/tasks-admin-server.mjs",

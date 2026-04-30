@@ -176,10 +176,6 @@ function splitMarkdownRow(line) {
     );
 }
 
-function escapeJsonScript(json) {
-  return json.replace(/<\/script/gi, '<\\/script');
-}
-
 export function normalizeTaskAction(action) {
   if (action === undefined || action === null || action === '') return null;
 
@@ -422,9 +418,6 @@ export function writeRuntimeAppCopy(copy = readAppCopy()) {
 export function writeTaskDatabase(database, modes = readModeConfigs()) {
   const json = `${JSON.stringify(database, null, 2)}\n`;
   fs.writeFileSync(repoPath('static', 'database.json'), json, 'utf8');
-  if (process.env.WRITE_LEGACY_DATABASE_JS === '1') {
-    fs.writeFileSync(repoPath('static', 'database.js'), `window.GAME_DATABASE = ${escapeJsonScript(json)};\n`, 'utf8');
-  }
   writeRuntimeModes(modes);
   writeRuntimeAppCopy();
 }

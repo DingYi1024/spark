@@ -16,8 +16,4 @@ writeTaskDatabase(database);
 if (warnings.length > 0) {
   console.log(`Task bank generated with ${warnings.length} warning(s). Run "npm run tasks:check" for details.`);
 }
-console.log(
-  process.env.WRITE_LEGACY_DATABASE_JS === '1'
-    ? 'Task bank generated: static/database.json and static/database.js.'
-    : 'Task bank generated: static/database.json.',
-);
+console.log('Task bank generated: static/database.json.');

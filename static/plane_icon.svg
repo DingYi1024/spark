@@ -1,6 +1,0 @@
-<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-  <!-- 飞机 -->
-  <g transform="translate(30, 30) rotate(-45)">
-    <path d="M0,-15 L20,15 L0,10 L-20,15 Z" fill="white" />
-  </g>
-</svg>

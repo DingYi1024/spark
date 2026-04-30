@@ -286,12 +286,6 @@ npm run tasks:check
 npm run tasks:build
 ```
 
-把导出的总编辑稿导回 `content/tasks/*.md`：
-
-```bash
-npm run tasks:import-edit -- "docs/TASK_BANK_EDIT.md"
-```
-
 构建现代版时会自动先执行 `tasks:build`：
 
 ```bash
